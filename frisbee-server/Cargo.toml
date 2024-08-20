@@ -1,0 +1,13 @@
+[package]
+name = "frisbee-server"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+salvo = { version = "0.71.0", features = ["logging","affix-state"] }
+tokio = { version = "1", features = ["macros"] }
+tracing = "0.1"
+tracing-subscriber = "0.3"
+serde = "1"
+serde_json = "1"
+log = "0.4.22"

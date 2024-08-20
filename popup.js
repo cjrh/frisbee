@@ -1,12 +1,19 @@
+let log = (msg) => {
+  // document.getElementById('msgs').textContent += msg;
+  // console.log(msg);
+}
+
 document.getElementById('sendUrl').addEventListener('click', async () => {
-  // Get the active tab
-  const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+  log('inside button click');
+  const [tab] = await browser.tabs.query({ active: true, currentWindow: true });
+  log(`tab: ${tab}`);
 
   if (tab) {
     const url = tab.url;
+    log(`url: ${url}`);
 
     // Send the URL to the localhost endpoint
-    fetch('http://localhost:3000/receive-url', {
+    fetch('http://localhost:5800', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -14,7 +21,7 @@ document.getElementById('sendUrl').addEventListener('click', async () => {
       body: JSON.stringify({ url: url })
     })
     .then(response => response.text())
-    .then(data => console.log('Success:', data))
-    .catch((error) => console.error('Error:', error));
+    .then(data => log(`Success: ${data}`))
+    .catch((error) => log(`Error: ${error}`));
   }
 });

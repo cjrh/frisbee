@@ -1,0 +1,2 @@
+about:debugging#/runtime/this-firefox
+https://crates.io/crates/youtube-dl-gui
